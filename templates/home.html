@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Trail Finder{% endblock %}
+
+{% block body %}
+  <h1>Welcome To Trail Finder</h1>
+
+  <ul>
+    <!-- <li><a href="/Sign_up">Sign up here</a></li> -->
+    <li><a href={{url_for("sign_up")}}>Sign up here</a></li>
+    <li><a href={{url_for("login")}}>Login here</a></li>
+  </ul>
+
+{% endblock %}

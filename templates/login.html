@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Login Page{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/formStyle.css">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <form action="/login" method="POST" id="form-login" class="form">
+        <h2>User Login</h2>
+        <div class="form-control">
+            <label for="email">Email</label>
+            <input type="text" id="email" placeholder="Enter email" name="email">
+            <small>Error message</small>
+        </div>
+
+        <div class="form-control">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter password" name="password">
+            <small>Error message</small>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script src="/static/js/loginScript.js"></script>
+  
+{% endblock %}
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/loginStyle.css">
+    <title>User Login</title>
+</head>
+<body>
+    <div class="container">
+        <form id="form" class="form">
+            <h2>User Login</h2>
+            <div class="form-control">
+                <label for="email">Email</label>
+                <input type="text" id="email" placeholder="Enter email">
+                <small>Error message</small>
+            </div>
+
+            <div class="form-control">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password">
+                <small>Error message</small>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script src="static/formScript.js"></script>
+    
+</body>
+</html> -->

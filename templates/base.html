@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>
+      {% block title %}{% endblock %}
+    </title>
+
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <div class="hero-head">
+      <nav class="navbar">
+        <div>
+          <div id="navbarMenuHeroA" class="navbar-menu">
+            <div class="navbar-end">
+              <div class="btn-group btn-group-justified">
+                <a href="/login" class="btn btn-default">Log-in</a>              
+                <a href="/sign_up" class="btn btn-default">Sign up</a>
+                <a href="/logout" class="btn btn-default" id="btnlogout">Logout</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+    {% for msg in get_flashed_messages() %}
+    <p class="flash-msg">
+      {{ msg }}
+    </p>
+    {% endfor %}
+    {% block body %}{% endblock %}
+
+    {% block after_body %}{% endblock %}
+
+  </body>
+</html>

@@ -1,0 +1,320 @@
+For DB creation and testing
+=============================
+A). Activate postgresql => $ sudo service postgresql start
+B). To drop the db      => $ dropdb <db_name>
+C). To create db        => $ createdb <db_name>
+D). To interact with db => $ psql trailfinder
+                        => psql (13.6 (Ubuntu 13.6-1.pgdg20.04+1))
+                        => Type "help" for help.
+                        => trailfinder=# 
+E).                     => $ source env/bin/activate
+F).                     => $ python3 -i model.py [should see : Connected to db]
+G).                     => >>> db.create_all()
+
+
+[1] Database has been created using SQLAlchemy meaning 
+
+    $ ipython3 -i model.py
+    >>> db.create_all()
+    >>> user1 =  User(first_name=fname, last_name="Pal", username="kpal", email="kpal@test.com", password="kaml@1234", confirm_password="kaml@1234")
+    >>> user1.email
+
+    $ psql trailfinder
+
+    trailfinder=# \dt
+    trailfinder=# \d users
+
+
+    user = User.query.filter_by(email=email).first()
+    if db.session.query(User).filter(User.email == email).count() == 0
+
+
+[2] Store some user in file and push them to db
+
+[3] Complete the registration form UI and push user entered registration data direct from UI -> DB
+
+[4] Create crud.py file and understand the usage.
+
+[5] Talk to instructor about the approach to push trails data to DB table ???
+
+[6] Complete the task to implement logic for "registration and login" along with correct page redirection.
+
+==========================
+source env/bin/activate
+==========================
+5/25: Logout implementation
+1. create a logout route. it should check 
+  if session["logged_in"] == True
+  click on the logout link on navbar
+
+2. Logout action should render a logout.html
+3. create logout.html
+4. In the 
+
+click on the logout on navbar
+  if looged_in:
+    render tamplate logout.html
+  else:
+    flash message (you are not logged in)
+    redirect "/login"
+
+
+
+
+================================================================
+<!-- {% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block head %}
+ <link rel="stylesheet" href="../static/ppp.css" /> 
+{% endblock %}
+
+{% block body %}
+
+  {% if message %}
+    <p class="message">{{ message | safe }}</p>
+  {% endif %}
+
+  <div class="subtitle"><h1>Log In</h1></div>
+  <br>
+  
+  <form action="/submit" method="POST">
+  <div class="form">
+      <p>
+        Email <input type="text" name="email">
+      </p>
+
+      <p>
+        Password <input type="password" name="password">
+      </p>
+
+      <p>
+         <input type="submit">=
+        <button type="text" class="submit">submit</button>
+      </p>
+    </div>
+  </form> -->
+
+
+   <!-- <h2>Log In</h2>
+  <form action="/login" method="POST">
+
+  <div class="form">
+    <div class="title">Welcome</div>
+    <div class="subtitle"><h1>Let's create your account!</h1></div>
+    <br>
+
+    <div class="input-container ic1">
+      <input id="firstname" class="input" type="text" placeholder=" " />
+      <div class="cut"></div>
+      <label for="firstname" class="placeholder">First name</label>
+    </div>
+    <div class="input-container ic2">
+      <input id="lastname" class="input" type="text" placeholder=" " />
+      <div class="cut"></div>
+      <label for="lastname" class="placeholder">Last name</label>
+    </div>
+    <div class="input-container ic2">
+      <input id="email" class="input" type="text" placeholder=" " />
+      <div class="cut cut-short"></div>
+      <label for="email" class="placeholder">Email</>
+    </div>
+    <button type="text" class="submit">submit</button>
+  </div>
+</form> 
+{% endblock %} -->
+======================================================
+<!-- {% extends 'base.html' %}
+{% block title %}Success{% endblock %}
+{% block head %}{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h2>Thank you!! We hope to see you soon!</h2>
+</div>
+    
+{% endblock %} -->
+
+=================================================================
+
+body {
+    align-items: center;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .form {
+    background-color: #15172b;
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: 500px;
+    padding: 20px;
+    width: 320px;
+  }
+  
+  .title {
+    color: #eee;
+    font-family: sans-serif;
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 30px;
+  }
+  
+  .subtitle {
+    color: #eee;
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  .input-container {
+    height: 50px;
+    position: relative;
+    width: 100%;
+  }
+  
+  .ic1 {
+    margin-top: 40px;
+  }
+  
+  .ic2 {
+    margin-top: 30px;
+  }
+  
+  .input {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+  }
+  
+  .cut {
+    background-color: #15172b;
+    border-radius: 10px;
+    height: 20px;
+    left: 20px;
+    position: absolute;
+    top: -20px;
+    transform: translateY(0);
+    transition: transform 200ms;
+    width: 76px;
+  }
+  
+  .cut-short {
+    width: 50px;
+  }
+  
+  .input:focus ~ .cut,
+  .input:not(:placeholder-shown) ~ .cut {
+    transform: translateY(8px);
+  }
+  
+  .placeholder {
+    color: #65657b;
+    font-family: sans-serif;
+    left: 20px;
+    line-height: 14px;
+    pointer-events: none;
+    position: absolute;
+    transform-origin: 0 50%;
+    transition: transform 200ms, color 200ms;
+    top: 20px;
+  }
+  
+  .input:focus ~ .placeholder,
+  .input:not(:placeholder-shown) ~ .placeholder {
+    transform: translateY(-30px) translateX(10px) scale(0.75);
+  }
+  
+  .input:not(:placeholder-shown) ~ .placeholder {
+    color: #808097;
+  }
+  
+  .input:focus ~ .placeholder {
+    color: #dc2f55;
+  }
+  
+  .submit {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    // outline: 0;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .submit:active {
+    background-color: #06b;
+  }
+  =============================================================================
+  
+
+# @app.route("/submit", methods=['POST'])
+# def submit():
+#     if request.method == 'POST':
+#         # email = request.form['email']
+#         # password = request.form['password']
+#         email = request.form.get('email')
+#         password = request.form.get('password')
+
+#     if email == '' or password == '':
+#        return render_template('login.html', message = "Please enter required fields")
+
+#     return render_template('success.html')
+
+
+
+# Updated after form changed.
+======================================================
+
+    
+
+
+# class Trails(db.Model):
+#     __tablename__ = "trails"
+
+#     trail_id =
+#     name =
+    
+#     location =
+
+
+
+
+# class User(db.model):
+#     """A user."""
+
+#     __tablename__ = "users"
+
+#     user_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+#     email = db.Column(db.String, unique=True)
+#     pasword = db.Column(db.String)
+
+#     def __repr__(self):
+#         return f<"User user_id={self.user_id} email={self.email}">
+
+
+# def connect_to_db(flask_app, db_uri="postgresql:///trailfinder", echo=True):
+#     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
+#     flask_app.config["SQLALCHEMY_ECHO"] = True
+#     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+#     db.app = flask_app
+#     db.init_app(flask_app)
+
+#     print("Connected to the db!")
