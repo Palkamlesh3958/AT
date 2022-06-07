@@ -1,8 +1,8 @@
 ## Hi there, my name is Kamlesh Pal, nice to meet you!
 
-    ..* Pronouns: she/her
-    ..* Contact me at: kam_bg_pl@yahoo.com
-    ..* LinkedIn: https://www.linkedin.com/in/kamlesh-pal-62976355/
+    * Pronouns: she/her
+    * Contact me at: kam_bg_pl@yahoo.com
+    * LinkedIn: https://www.linkedin.com/in/kamlesh-pal-62976355/
 
 
 Capstone project plam
